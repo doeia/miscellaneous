@@ -57,6 +57,8 @@
     "ostream": "cpp",
     "string": "cpp",
     "format": "cpp",
-    "vector": "cpp"
+    "vector": "cpp",
+    "iostream": "cpp",
+    "deque": "cpp"
   }
 }

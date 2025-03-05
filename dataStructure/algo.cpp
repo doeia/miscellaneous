@@ -15,3 +15,58 @@
 
   Map	Stores elements in "key/value" pairs. Accessible by keys (not by index).
  */
+
+/*
+Iterators are used to access and iterate through elements of data structures (vectors, sets, etc.), by "pointing" to them.
+
+When you are just reading the elements, and don't need to modify them, the for-each loop is much simpler and cleaner than iterators.
+
+However, when you need to add, modify, or remove elements during iteration, iterate in reverse, or skip elements, you should use iterators:
+*/
+
+#include <vector>
+#include <string>
+#include <deque>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+  // Create a vector called numbers that will store integers
+  vector<int> numbers = {1, 7, 3, 5, 9, 2};
+
+  // Sort numbers numerically
+  sort(numbers.begin(), numbers.end());
+  for (int num : numbers)
+  {
+    cout << num << "\n";
+  }
+
+  // Create a vector called numbers that will store integers
+  vector<int> numbers2 = {1, 7, 3, 5, 9, 2};
+
+  // Sort numbers numerically in reverse order
+  sort(numbers2.rbegin(), numbers2.rend());
+  for (int num : numbers2)
+  {
+    cout << num << "\n";
+  }
+
+  // Create a vector called numbers that will store integers
+  vector<int> numbers3 = {1, 7, 3, 5, 9, 2};
+
+  // Search for the number 3
+  auto it = find(numbers3.begin(), numbers3.end(), 3);
+  // Check if the number 3 was found
+  if (it != numbers3.end())
+  {
+    cout << "The number 3 was found!" << "\n";
+  }
+  else
+  {
+    cout << "The number 3 was not found." << "\n";
+  }
+
+  return 0;
+}

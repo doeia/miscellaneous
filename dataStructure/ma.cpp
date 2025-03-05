@@ -25,4 +25,6 @@ int main()
   {
     cout << person.first << " is: " << person.second << "\n";
   }
+
+  return 0;
 }
