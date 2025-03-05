@@ -1,0 +1,19 @@
+# cpp_algo
+initgit
+add
+README.mdgit
+commit
+-m
+first commit
+git
+branch
+-M
+maingit
+remote
+add
+origin
+https://github.com/doeia/cpp_algo.gitgit
+push
+-u
+origin
+main
