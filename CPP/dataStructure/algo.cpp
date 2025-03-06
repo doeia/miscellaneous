@@ -29,43 +29,42 @@ However, when you need to add, modify, or remove elements during iteration, iter
 #include <deque>
 #include <iostream>
 #include <algorithm>
-using namespace std;
 
 int main()
 {
   // Create a vector called numbers that will store integers
-  vector<int> numbers = {1, 7, 3, 5, 9, 2};
+  std::vector<int> numbers = {1, 7, 3, 5, 9, 2};
 
   // Sort numbers numerically
   sort(numbers.begin(), numbers.end());
   for (int num : numbers)
   {
-    cout << num << "\n";
+    std::cout << num << "\n";
   }
 
   // Create a vector called numbers that will store integers
-  vector<int> numbers2 = {1, 7, 3, 5, 9, 2};
+  std::vector<int> numbers2 = {1, 7, 3, 5, 9, 2};
 
   // Sort numbers numerically in reverse order
   sort(numbers2.rbegin(), numbers2.rend());
   for (int num : numbers2)
   {
-    cout << num << "\n";
+    std::cout << num << "\n";
   }
 
   // Create a vector called numbers that will store integers
-  vector<int> numbers3 = {1, 7, 3, 5, 9, 2};
+  std::vector<int> numbers3 = {1, 7, 3, 5, 9, 2};
 
   // Search for the number 3
   auto it = find(numbers3.begin(), numbers3.end(), 3);
   // Check if the number 3 was found
   if (it != numbers3.end())
   {
-    cout << "The number 3 was found!" << "\n";
+    std::cout << "The number 3 was found!" << "\n";
   }
   else
   {
-    cout << "The number 3 was not found." << "\n";
+    std::cout << "The number 3 was not found." << "\n";
   }
 
   return 0;

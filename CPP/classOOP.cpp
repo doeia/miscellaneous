@@ -1,11 +1,10 @@
 #include <string>
-using namespace std;
 class MyClass
 {
 private:
   /* data */
 public:
-  string myName;
+  std::string myName;
   // Constructor declaration
   MyClass(/* args */);
   ~MyClass();

@@ -10,13 +10,12 @@ However, when you need to add, modify, or remove elements during iteration, iter
 #include <string>
 #include <deque>
 #include <iostream>
-using namespace std;
 
 int main()
 {
 
   // Create a vector called cars that will store strings
-  vector<string> cars = {"Volvo", "BMW", "Ford", "Mazda"};
+  std::vector<std::string> cars = {"Volvo", "BMW", "Ford", "Mazda"};
 
   // Create a vector iterator called it
   // before version 11, use vector<string>::iterator it;
@@ -24,16 +23,16 @@ int main()
   // Loop through the vector with the iterator
   for (auto it = cars.begin(); it != cars.end(); ++it)
   {
-    cout << *it << "\n";
+    std::cout << *it << "\n";
   }
 
   // Create a deque called cars that will store strings
-  deque<string> cars2 = {"Volvo", "BMW", "Ford", "Mazda"};
+  std::deque<std::string> cars2 = {"Volvo", "BMW", "Ford", "Mazda"};
 
   // Loop through the deque with an iterator
   for (auto it = cars2.begin(); it != cars2.end(); ++it)
   {
-    cout << *it << "\n";
+    std::cout << *it << "\n";
   }
 
   return 0;
