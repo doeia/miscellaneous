@@ -1,24 +1,34 @@
 #include <iostream>
 #include <thread>
+#include <vector>
 
-int balance = 1000; // 初始余额
+int counter = 0;
 
-void deposit()
+void increment(int times)
 {
-  for (int i = 0; i < 1000; ++i)
+  for (int i = 0; i < times; ++i)
   {
-    balance++; // 存款操作
+    counter++; // 非原子操作，可能产生数据竞争
   }
 }
 
 int main()
 {
-  std::thread t1(deposit); // 线程 1 存款
-  std::thread t2(deposit); // 线程 2 存款
+  const int numThreads = 5;
+  const int incrementsPerThread = 100000;
+  std::vector<std::thread> threads;
 
-  t1.join();
-  t2.join();
+  // 创建多个线程进行累加操作
+  for (int i = 0; i < numThreads; ++i)
+  {
+    threads.emplace_back(increment, incrementsPerThread);
+  }
 
-  std::cout << "Final balance: " << balance << std::endl; // 期望余额为 2000
+  for (auto &t : threads)
+  {
+    t.join();
+  }
+
+  std::cout << "最终 counter 值为: " << counter << std::endl;
   return 0;
 }

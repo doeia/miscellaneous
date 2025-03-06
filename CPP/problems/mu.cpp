@@ -1,27 +1,37 @@
 #include <iostream>
 #include <thread>
 #include <mutex>
+#include <vector>
 
-int balance = 1000; // 初始余额
-std::mutex mtx;     // 互斥锁
+int counter = 0;
+std::mutex mtx; // 定义一个互斥锁
 
-void deposit()
+void safeIncrement(int times)
 {
-  for (int i = 0; i < 1000; ++i)
+  for (int i = 0; i < times; ++i)
   {
-    std::lock_guard<std::mutex> lock(mtx); // 自动加锁，保证线程安全
-    balance++;                             // 存款操作
+    // 使用 lock_guard 自动加锁和解锁
+    std::lock_guard<std::mutex> lock(mtx);
+    counter++;
   }
 }
 
 int main()
 {
-  std::thread t1(deposit);
-  std::thread t2(deposit);
+  const int numThreads = 5;
+  const int incrementsPerThread = 100000;
+  std::vector<std::thread> threads;
 
-  t1.join();
-  t2.join();
+  for (int i = 0; i < numThreads; ++i)
+  {
+    threads.emplace_back(safeIncrement, incrementsPerThread);
+  }
 
-  std::cout << "Final balance: " << balance << std::endl; // 期望余额为 2000
+  for (auto &t : threads)
+  {
+    t.join();
+  }
+
+  std::cout << "最终 counter 值为: " << counter << std::endl;
   return 0;
 }
