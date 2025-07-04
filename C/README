@@ -1,0 +1,11 @@
+## Static Library: Create the Client
+
+gcc -c client.c -o client.o
+gcc client.c -L. -lstatic -o client
+./client
+
+## Dynamic Library: Create the Client
+
+export LD_LIBRARY_PATH=＄PWD:＄LD_LIBRARY_PATH
+gcc client.c -L. -ldynamic -o client
+./client
